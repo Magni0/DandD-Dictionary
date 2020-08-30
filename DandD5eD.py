@@ -2,7 +2,7 @@ import json
 import requests
 
 # str mutate not working
-
+# add conditions to exclude data that user doesnt need 
 
 sections = ("ability-scores",
 "classes",
@@ -29,8 +29,8 @@ sections = ("ability-scores",
 def search(section, item):
     r = requests.get(f"https://www.dnd5eapi.co/api/{mutate_input(section)}/{mutate_input(item)}/")
     res = json.loads(r.text)
-    for key in res:
-        if type(res[key]) == dict:
+    for key in res: # displays data in neat format
+        if type(res[key]) == dict: # for nested lists
             for x in res[key]:
                 print(key, " : ", res[key][x], "\n")
         print(key, " : ", res[key], "\n")
@@ -41,7 +41,7 @@ def mutate_input(item):
     item.replace(" ", "-")
     return item
 
-
+#
 def section_select():
     print("input 'sections' to display a list of sections or input a section")
     choice_section = input("")
@@ -56,6 +56,7 @@ def section_select():
         section_select()
     return choice_section
 
+# 
 def item_select():
         print("input the spell/item/monster etc")
         choice_item = input("")
@@ -63,6 +64,7 @@ def item_select():
             exit()
         return choice_item
 
+# runs functions in correct sequence
 while True:
     print("input 'close' to exit")
     section = section_select()
