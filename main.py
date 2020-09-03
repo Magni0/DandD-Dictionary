@@ -1,6 +1,9 @@
 import json
 import requests
 
+# add option to search for serten parts eg. the proficiencies of classes/ranger
+# write up README
+
 sections = ("ability-scores",
 "classes",
 "conditions",
@@ -26,8 +29,15 @@ sections = ("ability-scores",
 def search(section, item):
     r = requests.get(f"https://www.dnd5eapi.co/api/{mutate_input(section)}/{mutate_input(item)}/")
     res = json.loads(r.text)
-    print("tags with url show you the section and name of that thing to look up for more info eg. url: '/api/damage-types/acid' means section: damage-types index: acid")
-    print(json.dumps(res, indent=1))
+    print("select what you wish to see or press enter to see all\n")
+    for i in res.keys(): print(i)
+    choice = input("")
+    print("\n")
+    if choice:
+        print(res[choice])
+    else:
+        print("tags with url show you the section and name of that thing to look up for more info eg. url: '/api/damage-types/acid' means section: damage-types index: acid")
+        print(json.dumps(res, indent=1) + "\n")
 
 # mutates str to fit api convention
 def mutate_input(item):
