@@ -26,12 +26,8 @@ sections = ("ability-scores",
 def search(section, item):
     r = requests.get(f"https://www.dnd5eapi.co/api/{mutate_input(section)}/{mutate_input(item)}/")
     res = json.loads(r.text)
-    print("tags with url show you the section and name of that thing to look up for more info eg. url: '/api/damage-types/acid' means section: damage-types specifyed item/spell/monster: acid")
-    for key in res: # displays data in neat format
-        if type(res[key]) == dict: # for nested lists
-            for x in res[key]:
-                print(key, " : ", res[key][x], "\n")
-        print(key, " : ", res[key], "\n")
+    print("tags with url show you the section and name of that thing to look up for more info eg. url: '/api/damage-types/acid' means section: damage-types index: acid")
+    print(json.dumps(res, indent=1))
 
 # mutates str to fit api convention
 def mutate_input(item):
@@ -54,7 +50,7 @@ def section_select():
 
 # 
 def item_select():
-        print("input the spell/item/monster etc")
+        print("input the index eg.spell/item/monster etc")
         choice_item = input("")
         if choice_item == "close":
             exit()
