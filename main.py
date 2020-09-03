@@ -1,9 +1,6 @@
 import json
 import requests
 
-# str mutate not working
-# add conditions to exclude data that user doesnt need 
-
 sections = ("ability-scores",
 "classes",
 "conditions",
@@ -29,6 +26,7 @@ sections = ("ability-scores",
 def search(section, item):
     r = requests.get(f"https://www.dnd5eapi.co/api/{mutate_input(section)}/{mutate_input(item)}/")
     res = json.loads(r.text)
+    print("tags with url show you the section and name of that thing to look up for more info eg. url: '/api/damage-types/acid' means section: damage-types specifyed item/spell/monster: acid")
     for key in res: # displays data in neat format
         if type(res[key]) == dict: # for nested lists
             for x in res[key]:
@@ -37,9 +35,7 @@ def search(section, item):
 
 # mutates str to fit api convention
 def mutate_input(item):
-    item.lower()
-    item.replace(" ", "-")
-    return item
+    return item.lower().replace(" ", "-")
 
 #
 def section_select():

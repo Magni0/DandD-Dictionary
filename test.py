@@ -8,4 +8,9 @@ import json
 #         for x in res[key]:
 #             print(key, " : ", res[key][x], "\n")
 #     print(key, " : ", res[key], "\n")
-    
+
+
+def mutate_input(item):
+    return item.lower().replace(" ", "-")
+
+print(mutate_input("HA HA HA"))
