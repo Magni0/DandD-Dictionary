@@ -1,4 +1,9 @@
 # D&D Dictionary
 
-## What Is It? 
+## What It Is
 
+-
+
+## Installation
+
+-
