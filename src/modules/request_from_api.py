@@ -4,7 +4,7 @@ import json
 
 class ApiRequest:
 
-    def specific_search(self, section, item):
+    def item_search(self, section, item):
         req = requests.get(f"https://www.dnd5eapi.co/api/{self.mutate_input(section)}/{self.mutate_input(item)}/")
         return json.loads(req.text)
 
@@ -12,7 +12,7 @@ class ApiRequest:
         req = requests.get(f"https://www.dnd5eapi.co/api/{self.mutate_input(section)}/")
         return json.loads(req.text)
 
-    def section_list(self):
+    def list_sections(self):
         req = requests.get(f"https://www.dnd5eapi.co/api/")
         return json.loads(req.text)
 
