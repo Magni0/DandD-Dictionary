@@ -1,14 +1,13 @@
-from request_from_api import ApiRequest
-req = ApiRequest()
-
-from functions import Functions
-func = Functions()
-
+from modules.request_from_api import ApiRequest
+from modules.functions import Functions
+from modules.pretty_list import PrettyList
+from modules.saved_requests import SaveFileManager
 import sys
 
-import pprint
-pp = pprint.PrettyPrinter(indent=1)
-
+req = ApiRequest()
+func = Functions()
+pl = PrettyList()
+sfm = SaveFileManager()
 
 print("""
 Welcome to the D&D Dictonary
@@ -24,14 +23,13 @@ if query_choice == "1":
 
 elif query_choice == "2":
     print("\nSelect a section or type 'exit' to exit:")
-    sections = func.pretty_list(req.section_list())
+    sections = func.pretty_section_list(req.section_list())
     section_choice = input("")
     if section_choice == "exit":
         sys.exit(0)
     elif section_choice in sections:
         print("\n")
         # work on pretty printing stuff
-        # pp.pprint(req.section_search(section_choice))
     else:
         raise Exception("Invalid input: please check spelling")
 
