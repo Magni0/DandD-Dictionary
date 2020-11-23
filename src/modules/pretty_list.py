@@ -62,7 +62,11 @@ class PrettyItem():
         pass
 
     def pretty_magic_schools(self, data: dict):
-        pass
+        list_magic_schools = []
+        [list_magic_schools.append(magic_school['name']) for magic_school in data['results']]
+        magic_schools = ", ".join(list_magic_schools)
+
+        return [f"Results: {data['count']}", f"Magic Schools: {magic_schools}"]
 
     def pretty_monsters(self, data: dict):
         pass
