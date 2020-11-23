@@ -36,7 +36,11 @@ class PrettyItem():
         return [f"Name: {data['name']}", f"Description: {data['desc'][0]}"]
 
     def pretty_equipment_categories(self, data: dict):
-        pass
+        list_equipment_catagories = []
+        [list_equipment_catagories.append(catagory['name']) for catagory in data['equipment']]
+        equipment_catagories = ", ".join(list_equipment_catagories)
+
+        return [f"Name: {data['name']}", f"Equipment: {equipment_catagories}"]
 
     def pretty_equipment(self, data: dict):
         pass
