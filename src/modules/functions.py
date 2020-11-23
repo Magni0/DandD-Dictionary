@@ -1,12 +1,8 @@
-import os
 import sys
 import string
 
 class Functions:
 
-    def set_cwd(self):
-        os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    
     def check_exit(self, check):
         if check == "exit":
             sys.exit(0)

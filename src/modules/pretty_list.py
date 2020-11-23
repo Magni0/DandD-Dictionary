@@ -40,7 +40,16 @@ class PrettyItem():
         pass
 
     def pretty_languages(self, data):
-        pass
+        list_data = []
+        typical_speakers = ", ".join(data['typical_speakers'])
+        list_data.append([
+            f"Name: {data['name']}",
+            f"Type: {data['type']}",
+            f"Typical Speakers: {typical_speakers}",
+            f"Script: {data['script']}"
+        ])
+        return list_data[0]
+
 
     def pretty_magic_items(self, data):
         pass

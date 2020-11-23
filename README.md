@@ -1,5 +1,7 @@
 # D&D Dictionary
 
+Note: This is a work in progress and is not fully functional at this time
+
 ## What It Is
 
 This application uses [this](https://www.dnd5eapi.co/) 5th edition dungeons and dragons API to provide a player with any infomation in the official books in a neat an easy to digest format. The player can also save the info into a text file to refer to later if they wish. Players now no longer need to carry around 5 books to play D&D.
