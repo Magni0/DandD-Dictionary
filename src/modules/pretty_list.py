@@ -86,7 +86,11 @@ class PrettyItem():
         pass
 
     def pretty_rules(self, data: dict):
-        pass
+        list_rules = []
+        [list_rules.append(rule['name']) for rule in data['subsections']]
+        rules = ", ".join(list_rules)
+
+        return [f"Name: {data['name']}", f"Subsections: {rules}"]
     
     def pretty_rule_sections(self, data: dict):
         pass
