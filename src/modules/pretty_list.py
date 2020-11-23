@@ -30,7 +30,7 @@ class PrettyItem():
         pass
 
     def pretty_damage_types(self, data):
-        pass
+        return [f"Name: {data['name']}", f"Description: {data['desc'][0]}"]
 
     def pretty_equipment_categories(self, data):
         pass
