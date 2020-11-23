@@ -27,7 +27,8 @@ class PrettyItem():
         pass
 
     def pretty_conditions(self, data):
-        pass
+        effects = "\n  ".join(data['desc'])
+        return [f"Name: {data['name']}", f'Effects:\n  {effects}'] 
 
     def pretty_damage_types(self, data):
         return [f"Name: {data['name']}", f"Description: {data['desc'][0]}"]
