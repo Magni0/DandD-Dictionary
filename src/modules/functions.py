@@ -3,6 +3,12 @@ import string
 
 class Functions:
 
+    def if_value(self, check):
+        try:
+            return check
+        except:
+            return "None"
+
     def check_exit(self, check):
         if check == "exit":
             sys.exit(0)
