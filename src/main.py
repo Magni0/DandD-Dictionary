@@ -17,7 +17,7 @@ Would you like to load a saved query or make a new query?
 2: Make New Query
 """)
 
-query_choice = input("")
+query_choice: str = input("")
 print("")
 
 if query_choice == "1": # Open saved query
@@ -25,20 +25,20 @@ if query_choice == "1": # Open saved query
     pass
 
 elif query_choice == "2": # Make new query
-    sections = ps.pretty_list_sections(req.list_sections())
+    sections: list = ps.pretty_list_sections(req.list_sections())
     
-    input_section = input("\nSelect section: ")
+    input_section: str = input("\nSelect section: ")
     func.check_exit(input_section)
     print("")
 
     if input_section in sections:
-        section = ps.pretty_section_search(req.section_search(input_section))
+        section: list = ps.pretty_section_search(req.section_search(input_section))
         
-        input_item = func.cap_input(input("\nSelect Item: "))
+        input_item: str = func.cap_input(input("\nSelect Item: "))
         func.check_exit(input_item)
 
         if input_item in section:
-            
+            # put code here
             pass
         
         else:

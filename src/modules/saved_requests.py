@@ -5,12 +5,12 @@ class SaveFileManager():
     def set_cwd(self):
         os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    def make_json_file(self, name, data):
+    def make_json_file(self, name: str, data: dict):
         self.set_cwd()
         with open(f'save/{name}.json', 'w') as file:
             file.write(json.dumps(data))
         
-    def load_json_file(self, name):
+    def load_json_file(self, name: str):
         self.set_cwd()
         with open(f'save/{name}.json', 'r') as file:
             raw = file.read() #reads contents

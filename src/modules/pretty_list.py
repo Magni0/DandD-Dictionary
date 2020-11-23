@@ -1,14 +1,12 @@
-from modules.functions import Functions
-func = Functions()
 
 class PrettySearch():
-    def pretty_list_sections(self, data):
+    def pretty_list_sections(self, data: dict):
         list_data = data.keys()
         for item in list_data:
             print(item)
         return list_data
 
-    def pretty_section_search(self, data):
+    def pretty_section_search(self, data: dict):
         list_data = []
         print(f"Total count: {data['count']}")
         for name in data["results"]:
@@ -20,33 +18,33 @@ class PrettySearch():
     #     pass
 
 class PrettyItem():
-    def pretty_ability_scores(self, data):
+    def pretty_ability_scores(self, data: dict):
         list_ability_scores = []
         [list_ability_scores.append(score['name']) for score in data['results']]
         ability_scores = ", ".join(list_ability_scores)
 
         return [f"Results: {data['count']}", f"Ability Scores: {ability_scores}"]
 
-    def pretty_classes(self, data):
+    def pretty_classes(self, data: dict):
         pass
 
-    def pretty_conditions(self, data):
+    def pretty_conditions(self, data: dict):
         effects = "\n  ".join(data['desc'])
         return [f"Name: {data['name']}", f'Effects:\n  {effects}'] 
 
-    def pretty_damage_types(self, data):
+    def pretty_damage_types(self, data: dict):
         return [f"Name: {data['name']}", f"Description: {data['desc'][0]}"]
 
-    def pretty_equipment_categories(self, data):
+    def pretty_equipment_categories(self, data: dict):
         pass
 
-    def pretty_equipment(self, data):
+    def pretty_equipment(self, data: dict):
         pass
 
-    def pretty_features(self, data):
+    def pretty_features(self, data: dict):
         pass
 
-    def pretty_languages(self, data):
+    def pretty_languages(self, data: dict):
         list_data = []
         typical_speakers = ", ".join(data['typical_speakers'])
         
@@ -60,40 +58,40 @@ class PrettyItem():
         return list_data[0]
 
 
-    def pretty_magic_items(self, data):
+    def pretty_magic_items(self, data: dict):
         pass
 
-    def pretty_magic_schools(self, data):
+    def pretty_magic_schools(self, data: dict):
         pass
 
-    def pretty_monsters(self, data):
+    def pretty_monsters(self, data: dict):
         pass
 
-    def pretty_proficiencies(self, data):
+    def pretty_proficiencies(self, data: dict):
         pass
 
-    def pretty_races(self, data):
+    def pretty_races(self, data: dict):
         pass
 
-    def pretty_rules(self, data):
+    def pretty_rules(self, data: dict):
         pass
     
-    def pretty_rule_sections(self, data):
+    def pretty_rule_sections(self, data: dict):
         pass
 
-    def pretty_skills(self, data):
+    def pretty_skills(self, data: dict):
         pass
 
-    def pretty_spells(self, data):
+    def pretty_spells(self, data: dict):
         pass
 
-    def pretty_starting_equipment(self, data):
+    def pretty_starting_equipment(self, data: dict):
         pass
 
-    def pretty_subclasses(self, data):
+    def pretty_subclasses(self, data: dict):
         pass
 
-    def pretty_subraces(self, data):
+    def pretty_subraces(self, data: dict):
         list_data = []
         list_keys = data.keys()
 
@@ -144,8 +142,8 @@ class PrettyItem():
 
         return list_data
 
-    def pretty_traits(self, data):
+    def pretty_traits(self, data: dict):
         pass
 
-    def pretty_weapon_properties(self, data):
+    def pretty_weapon_properties(self, data: dict):
         pass

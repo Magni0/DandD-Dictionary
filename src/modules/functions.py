@@ -3,13 +3,7 @@ import string
 
 class Functions:
 
-    def if_value(self, check):
-        try:
-            return check
-        except:
-            return "None"
-
-    def check_exit(self, check):
+    def check_exit(self, check: str):
         if check == "exit":
             sys.exit(0)
         else:
