@@ -21,7 +21,11 @@ class PrettySearch():
 
 class PrettyItem():
     def pretty_ability_scores(self, data):
-        pass
+        list_ability_scores = []
+        [list_ability_scores.append(score['name']) for score in data['results']]
+        ability_scores = ", ".join(list_ability_scores)
+
+        return [f"Results: {data['count']}", f"Ability Scores: {ability_scores}"]
 
     def pretty_classes(self, data):
         pass
