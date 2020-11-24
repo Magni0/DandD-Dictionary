@@ -80,7 +80,14 @@ class PrettyItem():
         pass
 
     def pretty_proficiencies(self, data: dict):
-        pass
+        list_proficiencies = []
+
+        list_proficiencies.append([
+            f"{data['name']}",
+            f"Details At Section: {data['references'][0]['type']}"
+        ])
+
+        return list_proficiencies
 
     def pretty_races(self, data: dict):
         pass
