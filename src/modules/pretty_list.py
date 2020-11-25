@@ -100,7 +100,7 @@ class PrettyItem():
         return [f"Name: {data['name']}", f"Subsections: {rules}"]
     
     def pretty_rule_sections(self, data: dict):
-        pass
+        return [f"Name: {data['name']}", f"{data['desc']}"]
 
     def pretty_skills(self, data: dict):
         pass
