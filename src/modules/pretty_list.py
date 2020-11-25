@@ -77,7 +77,45 @@ class PrettyItem():
         return [f"Results: {data['count']}", f"Magic Schools: {magic_schools}"]
 
     def pretty_monsters(self, data: dict):
-        pass
+        list_data = []
+        list_keys = data.keys()
+
+        list_data.append([
+            f"Name: {data['name']}",
+            f"Size: {data['size']}",
+            f"Type: {data['type']}",
+            f"Subtype: {data['subtype']}",
+            f"Alignment: {data['alignment']}",
+            f"Armor Class: {str(data['armor_class'])}",
+            f"Hit Points: {str(data['hit_points'])}",
+            f"Hit Dice: {data['hit_dice']}"
+        ])
+
+        list_speed = []
+        if data['speed']['walk']:
+            list_speed.append(f"Walk: {data['speed']['walk']}")
+        if data['speed']['fly']:
+            list_speed.append(f"Fly: {data['speed']['fly']}")
+        if data['speed']['swim']:
+            list_speed.append(f"Swim: {data['speed']['swim']}")
+        speed = "\n  ".join(list_speed)
+        list_data[0].append(f"Speed:\n  {speed}")
+
+        list_stats = []
+        list_stats.append([
+            f"STR: {str(data['strength'])}",
+            f"DEX: {str(data['dexterity'])}",
+            f"CON: {str(data['constitution'])}",
+            f"INT: {str(data['intelligence'])}",
+            f"WIS: {str(data['wisdom'])}",
+            f"CHA: {str(data['charisma'])}"
+        ])
+        stats = "\n  ".join(list_stats[0])
+        list_data[0].append(f"Stats:\n  {stats}")
+
+        # up to proficiencies
+
+        return list_data[0]
 
     def pretty_proficiencies(self, data: dict):
         list_proficiencies = []
