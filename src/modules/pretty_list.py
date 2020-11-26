@@ -113,7 +113,38 @@ class PrettyItem():
         stats = "\n  ".join(list_stats[0])
         list_data[0].append(f"Stats:\n  {stats}")
 
-        # up to proficiencies
+        list_monster_proficiencies = []
+        [list_monster_proficiencies.append(f"{proficiency['proficiency']['name']}") for proficiency in data['proficiencies']]
+        monster_proficiencies = "\n  ".join(list_monster_proficiencies)
+        list_data[0].append(f"Proficiencies:\n  {monster_proficiencies}")
+
+        damage_vulnerabilities = "\n  ".join(data['damage_vulnerabilities'])
+        list_data[0].append(f"Damage Vulnerabilities:\n  {damage_vulnerabilities}")
+
+        damage_resistances = "\n  ".join(data['damage_resistances'])
+        list_data[0].append(f"Damage Resistances:\n  {damage_resistances}")
+
+        damage_immunities = "\n  ".join(data['damage_immunities'])
+        list_data[0].append(f"Damage Immunities:\n  {damage_immunities}")
+
+        condition_immunities = "\n  ".join(data['condition_immunities'])
+        list_data[0].append(f"Condition Immunities:\n  {condition_immunities}")
+        
+        list_senses = []
+        if data['senses']['passive_perception']:
+            list_senses.append(f"Passive Perception: {str(data['senses']['passive_perception'])}")
+        if data['senses']['darkvision']:
+            list_senses.append(f"Dark Vision: {data['senses']['darkvision']}")
+        if data['senses']['blindsight']:
+            list_senses.append(f"Blind Sight: {data['senses']['blindsight']}")
+        senses = "\n  ".join(list_senses)
+        list_data[0].append(f"Senses:\n  {senses}")
+
+        list_data[0].append(f"Languages: {data['languages']}")
+        list_data[0].append(f"Challenge Rating: {str(data['challenge_rating'])}")
+        list_data[0].append(f"XP: {str(data['xp'])}")
+
+        # special_abilities
 
         return list_data[0]
 
