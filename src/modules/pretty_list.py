@@ -129,13 +129,14 @@ class PrettyItem():
 
         condition_immunities = "\n  ".join(data['condition_immunities'])
         list_data[0].append(f"Condition Immunities:\n  {condition_immunities}")
-        
+
         list_senses = []
-        if data['senses']['passive_perception']:
+        senses_keys = data['senses'].keys()
+        if "passive_perception" in senses_keys:
             list_senses.append(f"Passive Perception: {str(data['senses']['passive_perception'])}")
-        if data['senses']['darkvision']:
+        if "darkvision" in senses_keys:
             list_senses.append(f"Dark Vision: {data['senses']['darkvision']}")
-        if data['senses']['blindsight']:
+        if "blindsight" in senses_keys:
             list_senses.append(f"Blind Sight: {data['senses']['blindsight']}")
         senses = "\n  ".join(list_senses)
         list_data[0].append(f"Senses:\n  {senses}")
@@ -144,7 +145,34 @@ class PrettyItem():
         list_data[0].append(f"Challenge Rating: {str(data['challenge_rating'])}")
         list_data[0].append(f"XP: {str(data['xp'])}")
 
-        # special_abilities
+        if "special_abilities" in list_keys:
+            list_special_abilities = []
+            for ability in data['special_abilities']:
+                if "usage" in ability.keys():
+                    list_special_abilities.append(f"Name: {ability['name']}\n    Description: {ability['desc']}\n    Can Use: {ability['usage']['times']} times {ability['usage']['type']}")
+                else:
+                    list_special_abilities.append(f"Name: {ability['name']}\n    Description: {ability['desc']}")
+            special_abilities = "\n  ".join(list_special_abilities)
+            list_data[0].append(f"Special Abilities:\n  {special_abilities}")
+
+        # actions
+        if "actions" in list_keys:
+            list_actions = []
+            for action in data['actions']:
+                if "usage" in action.keys():
+                    list_actions.append(f"Name: {action['name']}\n    Description: {action['desc']}\n    {action['usage']['type']} with {action['usage']['dice']} above {str(action['usage']['min_value'])}")
+                elif "options" in action.keys():
+                    list_options = []
+                    for option in action['options']['from'][0]:
+                        list_options.append(f"Name: {option['name']}, Count: {str(option['count'])}, Type: {option['type']}")
+                    options = "\n      ".join(list_options)
+                    list_actions.append(f"Name: {action['name']}\n    Description: {action['desc']}\n    Choose {str(action['options']['choose'])} from:\n      {options}")
+                else:
+                    list_actions.append(f"Name: {action['name']}\n    Description: {action['desc']}")
+            actions = "\n  ".join(list_actions)
+            list_data[0].append(f"Actions:\n  {actions}")
+
+        # legendary actions
 
         return list_data[0]
 
