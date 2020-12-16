@@ -155,7 +155,6 @@ class PrettyItem():
             special_abilities = "\n  ".join(list_special_abilities)
             list_data[0].append(f"Special Abilities:\n  {special_abilities}")
 
-        # actions
         if "actions" in list_keys:
             list_actions = []
             for action in data['actions']:
@@ -173,6 +172,12 @@ class PrettyItem():
             list_data[0].append(f"Actions:\n  {actions}")
 
         # legendary actions
+        if "legendary_actions" in list_keys:
+            list_legendary_actions = []
+            for legendary_action in data["legendary_actions"]:
+                list_legendary_actions.append(f"Name: {legendary_action['name']}\n    Description: {legendary_action['desc']}")
+            legendary_actions = "\n  ".join(list_legendary_actions)
+            list_data[0].append(f"Legendary Actions:\n  {legendary_actions}")
 
         return list_data[0]
 
