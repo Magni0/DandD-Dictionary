@@ -26,7 +26,32 @@ class PrettyItem():
         return [f"Results: {data['count']}", f"Ability Scores: {ability_scores}"]
 
     def pretty_classes(self, data: dict):
-        pass
+        list_classes: list = []
+        list_keys = data.keys()
+
+        list_classes.append(f"Name: {data['name']}")
+        list_classes.append(f"Hit Die: {str(data['hit_die'])}")
+
+        list_proficiency_choice: list = []
+        [list_proficiency_choice.append(choice['name']) for choice in data['proficiency_choices'][0]['from']]
+        proficiency_choices: str = "\n    - ".join(list_proficiency_choice)
+        list_classes.append(f"Skill Proficiencies:\n  Choose {str(data['proficiency_choices'][0]['choose'])} from:\n    - {proficiency_choices}")
+
+        proficiency: str = "\n  - ".join([prof['name'] for prof in data['proficiencies']])
+        list_classes.append(f"Proficiencies:\n  - {proficiency}")
+
+        saving_throws: str = "\n  - ".join([throw['name'] for throw in data['saving_throws']]) 
+        list_classes.append(f"Saving Throws:\n  - {saving_throws}")
+
+        subclasses: str = "\n  - ".join([subclass['name'] for subclass in data['subclasses']])
+        list_classes.append(f"Subclasses:\n  - {subclasses}")
+
+        list_spellcasting: list = []
+        [list_spellcasting.append(f"- {info['name']}:\n      {info['desc'][0]}") for info in data['spellcasting']['info']]
+        spellcasting: str = "\n  ".join(list_spellcasting)
+        list_classes.append(f"Spellcasting Ability: {data['spellcasting']['spellcasting_ability']['name']}\nSpellcasting Info:\n  {spellcasting}")
+
+        return list_classes
 
     def pretty_conditions(self, data: dict):
         effects: str = "\n  ".join(data['desc'])
@@ -60,7 +85,6 @@ class PrettyItem():
         ])
         
         return list_data[0]
-
 
     def pretty_magic_items(self, data: dict):
         list_magic_items: list = []

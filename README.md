@@ -1,6 +1,6 @@
 # D&D Dictionary
 
-Note: This is a work in progress and is not fully functional at this time
+**Work In Progress**
 
 ## What It Is
 
