@@ -283,4 +283,9 @@ class PrettyItem():
         pass
 
     def pretty_weapon_properties(self, data: dict):
-        pass
+        list_data: list = []
+
+        list_data.append(f"Name: {data['name']}")
+        list_data.append(f"Description: {data['desc'][0]}")
+
+        return list_data
