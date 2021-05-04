@@ -280,7 +280,35 @@ class PrettyItem():
         return list_data
 
     def pretty_traits(self, data: dict):
-        pass
+        list_data: list = []
+
+        list_data.append(f"Name: {data['name']}")
+        list_data.append(f"Description: {data['desc'][0]}")
+        
+        list_races_available: list = []
+        [list_races_available.append(race['name']) for race in data['races']]
+        races_available: str = ", ".join(list_races_available)
+        list_data.append(f"Races available: {races_available}")
+
+        list_subraces_available: list = []
+        [list_subraces_available.append(subrace['name']) for subrace in data['subraces']]
+        subraces_available: str = ", ".join(list_subraces_available)
+        list_data.append(f"Subraces available: {subraces_available}")
+
+        list_proficiencies: list = []
+        [list_proficiencies.append(prof['name']) for prof in data['proficiencies']]
+        proficiencies: str = ", ".join(list_proficiencies)
+        list_data.append(f"Proficiencies: {proficiencies}")
+
+        try:
+            list_proficiency_choices: list = []
+            [list_proficiency_choices.append(choice['name']) for choice in data['proficiency_choices']['from']]
+            choices: str = ", ".join(list_proficiency_choices)
+            list_data.append(f"Proficiency choices:\n  Choose: {data['proficiency_choices']['choose']} {data['proficiency_choices']['type']} from {choices}")
+        except:
+            list_data.append("Proficiency choices:")
+
+        return list_data
 
     def pretty_weapon_properties(self, data: dict):
         list_data: list = []
