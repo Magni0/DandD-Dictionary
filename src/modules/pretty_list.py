@@ -237,7 +237,27 @@ class PrettyItem():
         pass
 
     def pretty_subclasses(self, data: dict):
-        pass
+        list_data: list = []
+
+        list_data.append(f"Name: {data['name']}")
+        list_data.append(f"Flavor: {data['subclass_flavor']}")
+        list_data.append(f"Parent class: {data['class']['name']}")
+        list_data.append(f"Description: {data['desc'][0]}")
+
+        list_spells: list = []
+        for spell in data['spells']:
+            
+            list_prerequisites: list = []
+            for prerequisite in spell['prerequisites']:
+                list_prerequisites.append(f"{prerequisite['type']} {prerequisite['name']}")
+            prerequisites: str = ", ".join(list_prerequisites)
+
+            list_spells.append(f"{spell['spell']['name']}: {prerequisites}")
+        spells = "\n  ".join(list_spells)
+
+        list_data.append(f"Spells: \n  {spells}")
+
+        return list_data
 
     def pretty_subraces(self, data: dict):
         list_data: list = []
