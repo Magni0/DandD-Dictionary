@@ -76,7 +76,7 @@ class PrettyItem():
     def pretty_languages(self, data: dict):
         list_data: list = []
         typical_speakers: str = ", ".join(data['typical_speakers'])
-        
+
         list_data.append([
             f"Name: {data['name']}",
             f"Type: {data['type']}",
@@ -223,7 +223,7 @@ class PrettyItem():
         rules: str = ", ".join(list_rules)
 
         return [f"Name: {data['name']}", f"Subsections: {rules}"]
-    
+
     def pretty_rule_sections(self, data: dict):
         return [f"Name: {data['name']}", f"{data['desc']}"]
 
@@ -234,7 +234,16 @@ class PrettyItem():
         pass
 
     def pretty_starting_equipment(self, data: dict):
-        pass
+        list_data: list = []
+
+        list_data.append(f"Class: {data['class']['name']}")
+
+        list_starting_equipment: list = []
+        [list_starting_equipment.append(f"{eq['quantity']} {eq['equipment']['name']}") for eq in data['starting_equipment']]
+        starting_equipment: str = ", ".join(list_starting_equipment)
+        list_data.append(f"Starting Equipment: {starting_equipment}")
+
+        return
 
     def pretty_subclasses(self, data: dict):
         list_data: list = []

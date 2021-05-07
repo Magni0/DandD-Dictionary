@@ -8,7 +8,7 @@ class Functions:
             sys.exit(0)
         else:
             return
-    
+
     def cap_input(self, words: str):
         words.replace("-", " ")
         string.capwords(words)

@@ -26,7 +26,7 @@ if query_choice == "1": # Open saved query
 
 elif query_choice == "2": # Make new query
     sections: list = ps.pretty_list_sections(req.list_sections())
-    
+
     input_section: str = input("\nSelect section: ")
     func.check_exit(input_section)
     print("")
@@ -43,7 +43,7 @@ elif query_choice == "2": # Make new query
         
         else:
             raise Exception(f"Invalid input: {input_item} not in {input_section}")    
-    
+
     else:
         raise Exception(f"Invalid input: {input_section} not in listed sections")
 

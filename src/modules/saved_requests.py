@@ -9,7 +9,7 @@ class SaveFileManager():
         self.set_cwd()
         with open(f'save/{name}.json', 'w') as file:
             file.write(json.dumps(data))
-        
+
     def load_json_file(self, name: str):
         self.set_cwd()
         with open(f'save/{name}.json', 'r') as file:
